@@ -1,5 +1,6 @@
 import React, {createContext, useState} from 'react';
 import {firebase} from '../firebase/config';
+import {kitty} from "../chatkitty/ChatKittyManager";
 
 /**
  * This provider is created
@@ -18,8 +19,17 @@ export const AuthProvider = ({children}) => {
             setUser,
             login: async (email, password) => {
               try {
-                await firebase.auth().signInWithEmailAndPassword(email,
-                    password);
+                kitty.startSession(
+                    {
+                      username: email,
+                      authParams: {
+                        password: password
+                      },
+                      callback: result => {
+                        setUser(result.currentUser);
+                      }
+                    }
+                );
               } catch (e) {
                 console.log(e);
               }
