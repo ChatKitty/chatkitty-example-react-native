@@ -26,7 +26,11 @@ export const AuthProvider = ({children}) => {
                         password: password
                       },
                       callback: result => {
-                        setUser(result.currentUser);
+                        if (result.wasSuccessful) {
+                          setUser(result.session.user);
+                        } else {
+                          console.log('Could not login');
+                        }
                       }
                     }
                 );

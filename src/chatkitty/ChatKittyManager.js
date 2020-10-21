@@ -1,4 +1,4 @@
-import ChatKitty from 'chatkitty-js';
+import ChatKitty from 'chatkitty';
 import {default as configuration} from './configuration.json';
 
 class ChatKittyService {

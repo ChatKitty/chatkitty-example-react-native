@@ -11,8 +11,6 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.7.5",
     "@react-navigation/stack": "^5.9.2",
-    "chatkitty-js": "file:../chatkitty-js",
-    "chatkitty-sdk-web": "../chatkitty-sdk-web",
     "dayjs": "^1.9.1",
     "expo": "~39.0.2",
     "expo-firebase-core": "~1.2.0",
