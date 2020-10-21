@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ChatKitty Example",
-    "slug": "ChatKittyExample",
+    "name": "chatkitty-example-react-native",
+    "slug": "chatkitty-example-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

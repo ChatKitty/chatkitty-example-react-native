@@ -1,4 +1,3 @@
-# Expo
 node_modules/**/*
 .expo/*
 npm-debug.*
@@ -9,9 +8,6 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-
-# Intellij
-.idea
 
 # macOS
 .DS_Store
