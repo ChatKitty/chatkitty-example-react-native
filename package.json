@@ -11,6 +11,7 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
+    "chatkitty": "^0.0.6",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
     "firebase": "^7.24.0",
