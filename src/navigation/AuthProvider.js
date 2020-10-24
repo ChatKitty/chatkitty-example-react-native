@@ -1,4 +1,5 @@
 import React, {createContext, useState} from 'react';
+import {firebase} from '../firebase';
 
 export const AuthContext = createContext({});
 
@@ -14,7 +15,18 @@ export const AuthProvider = ({children}) => {
               // TODO
             },
             register: async (displayName, email, password) => {
-              // TODO
+              try {
+                await firebase.auth().createUserWithEmailAndPassword(email,
+                    password)
+                .then(credential => {
+                  credential.user.updateProfile({displayName: displayName})
+                  .then(async () => {
+                    // TODO start a user chat session and log the user in
+                  })
+                });
+              } catch (e) {
+                console.log(e);
+              }
             },
             logout: async () => {
               // TODO
