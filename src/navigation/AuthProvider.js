@@ -1,5 +1,6 @@
 import React, {createContext, useState} from 'react';
 import {firebase} from '../firebase';
+import {kitty} from '../chatkitty';
 
 export const AuthContext = createContext({});
 
@@ -12,7 +13,16 @@ export const AuthProvider = ({children}) => {
             user,
             setUser,
             login: async (email, password) => {
-              // TODO
+              let result = await kitty.startSession({
+                username: email,
+                authParams: {
+                  password: password
+                }
+              });
+
+              if (result.failed) {
+                console.log('Could not login')
+              }
             },
             register: async (displayName, email, password) => {
               try {
@@ -21,7 +31,16 @@ export const AuthProvider = ({children}) => {
                 .then(credential => {
                   credential.user.updateProfile({displayName: displayName})
                   .then(async () => {
-                    // TODO start a user chat session and log the user in
+                    let result = await kitty.startSession({
+                      username: email,
+                      authParams: {
+                        password: password
+                      }
+                    });
+
+                    if (result.failed) {
+                      console.log('Could not login')
+                    }
                   })
                 });
               } catch (e) {
@@ -29,7 +48,11 @@ export const AuthProvider = ({children}) => {
               }
             },
             logout: async () => {
-              // TODO
+              try {
+                await kitty.endSession();
+              } catch (e) {
+                console.error(e);
+              }
             }
           }}
       >

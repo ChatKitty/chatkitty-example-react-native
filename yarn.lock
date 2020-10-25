@@ -2233,13 +2233,14 @@ chardet@^0.4.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
   integrity sha1-tUc7M9yXxCTl2Y3IfVXU2KKci/I=
 
-chatkitty@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-0.0.6.tgz#66a61df3dd519b718672236922827b9e9899871a"
-  integrity sha512-t6Pv2uKZBqm9xNddOdpBJm9rIOKCv21kM7Fh+QjvZdZBMgR2+IFhHKLaw5onRDJOd/++RIgo+BYylKLFt+zAMg==
+chatkitty@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-0.0.15.tgz#becee6d0ed3a0779e5c348b4e5c568be7bceacc4"
+  integrity sha512-Xx+i2crxJ3v0EaUkYoYHh62ZaVv4lzJGsfiL418JCVN8Qn64RDO/Iy2WQZdIz6UGqDQq5r0Py0FbY23hM+gaOg==
   dependencies:
     "@stomp/rx-stomp" "^0.3.5"
     rxjs "^6.6.3"
+    text-encoding "^0.7.0"
 
 ci-info@^2.0.0:
   version "2.0.0"
@@ -5960,6 +5961,11 @@ temp@0.8.3:
   dependencies:
     os-tmpdir "^1.0.0"
     rimraf "~2.2.6"
+
+text-encoding@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/text-encoding/-/text-encoding-0.7.0.tgz#f895e836e45990624086601798ea98e8f36ee643"
+  integrity sha512-oJQ3f1hrOnbRLOcwKz0Liq2IcrvDeZRHXhd9RgLrsT+DjWY/nty1Hi7v3dtkaEYbPYe0mUoOfzRrMwfXXwgPUA==
 
 throat@^4.1.0:
   version "4.1.0"
