@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import CreateChannelScreen from '../screens/CreateChannelScreen';
 import { IconButton } from 'react-native-paper';
+import ChannelScreen from '../screens/ChannelScreen';
 
 const ChatStack = createStackNavigator();
 const ModalStack = createStackNavigator();
@@ -41,6 +42,13 @@ function ChatComponent() {
                       onPress={() => navigation.navigate('CreateChannel')}
                   />
               ),
+            })}
+        />
+        <ChatStack.Screen
+            name="Channel"
+            component={ChannelScreen}
+            options={({ route }) => ({
+              title: route.params.channel.name
             })}
         />
       </ChatStack.Navigator>
