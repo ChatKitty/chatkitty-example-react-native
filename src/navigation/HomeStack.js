@@ -4,6 +4,7 @@ import HomeScreen from '../screens/HomeScreen';
 import CreateChannelScreen from '../screens/CreateChannelScreen';
 import { IconButton } from 'react-native-paper';
 import ChannelScreen from '../screens/ChannelScreen';
+import BrowseChannelsScreen from '../screens/BrowseChannelsScreen';
 
 const ChatStack = createStackNavigator();
 const ModalStack = createStackNavigator();
@@ -39,18 +40,26 @@ function ChatComponent() {
                       icon="plus"
                       size={28}
                       color="#ffffff"
-                      onPress={() => navigation.navigate('CreateChannel')}
+                      onPress={() => navigation.navigate('BrowseChannels')}
                   />
               ),
             })}
         />
         <ChatStack.Screen
-            name="Channel"
-            component={ChannelScreen}
-            options={({ route }) => ({
-              title: route.params.channel.name
+            name="BrowseChannels"
+            component={BrowseChannelsScreen}
+            options={({ navigation }) => ({
+              headerRight: () => (
+                  <IconButton
+                      icon="plus"
+                      size={28}
+                      color="#ffffff"
+                      onPress={() => navigation.navigate('CreateChannel')}
+                  />
+              ),
             })}
         />
+        <ChatStack.Screen name="Channel" component={ChannelScreen} />
       </ChatStack.Navigator>
   );
 }
