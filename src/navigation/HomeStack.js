@@ -59,7 +59,13 @@ function ChatComponent() {
               ),
             })}
         />
-        <ChatStack.Screen name="Channel" component={ChannelScreen} />
+        <ChatStack.Screen
+            name="Channel"
+            component={ChannelScreen}
+            options={({ route }) => ({
+              title: route.params.channel.name
+            })}
+        />
       </ChatStack.Navigator>
   );
 }

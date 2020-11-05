@@ -32,18 +32,15 @@ export default function HomeScreen({ navigation }) {
             keyExtractor={(item) => item.id.toString()}
             ItemSeparatorComponent={() => <Divider />}
             renderItem={({ item }) => (
-                <TouchableOpacity
+                <List.Item
+                    title={item.name}
+                    description={item.type}
+                    titleNumberOfLines={1}
+                    titleStyle={styles.listTitle}
+                    descriptionStyle={styles.listDescription}
+                    descriptionNumberOfLines={1}
                     onPress={() => navigation.navigate('Channel', { channel: item })}
-                >
-                  <List.Item
-                      title={item.name}
-                      description={item.type}
-                      titleNumberOfLines={1}
-                      titleStyle={styles.listTitle}
-                      descriptionStyle={styles.listDescription}
-                      descriptionNumberOfLines={1}
-                  />
-                </TouchableOpacity>
+                />
             )}
         />
       </View>
