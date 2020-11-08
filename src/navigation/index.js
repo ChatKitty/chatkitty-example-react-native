@@ -1,13 +1,16 @@
 import React from 'react';
-import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
-import {AuthProvider} from './AuthProvider';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import { InAppNotificationProvider } from '@chatkitty/react-native-in-app-notification';
+import { AuthProvider } from './AuthProvider';
 import Routes from './Routes';
 
 export default function Providers() {
   return (
       <PaperProvider theme={theme}>
         <AuthProvider>
-          <Routes/>
+          <InAppNotificationProvider>
+            <Routes />
+          </InAppNotificationProvider>
         </AuthProvider>
       </PaperProvider>
   );
