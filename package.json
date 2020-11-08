@@ -8,11 +8,15 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@chatkitty/react-native-in-app-notification": "^1.0.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
     "chatkitty": "~0.0.26",
     "expo": "~39.0.2",
+    "expo-constants": "^9.2.0",
+    "expo-notifications": "^0.7.2",
+    "expo-permissions": "^9.3.0",
     "expo-status-bar": "~1.0.2",
     "firebase": "^7.24.0",
     "react": "16.13.1",
