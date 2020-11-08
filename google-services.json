@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "540634290949",
+    "firebase_url": "https://chatkitty-example.firebaseio.com",
+    "project_id": "chatkitty-example",
+    "storage_bucket": "chatkitty-example.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540634290949:android:32194a278a4a63fc0ff56c",
+        "android_client_info": {
+          "package_name": "com.chatkitty.example.reactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540634290949-a4b46p0pjre4qk5bpmcph1vff67pm8c3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chatkitty.example.reactnative",
+            "certificate_hash": "743f78bf6ee20094936727c56393ce10a8c4140c"
+          }
+        },
+        {
+          "client_id": "540634290949-i507vc81gmme2uepmb60qbl9lim8jman.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcMU2oxZ0E7iWiZH8R4hzNiYoKaihanec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540634290949-i507vc81gmme2uepmb60qbl9lim8jman.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
