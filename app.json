@@ -16,6 +16,10 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.chatkitty.example.reactnative",
+      "googleServicesFile": "./google-services.json"
+    },
     "ios": {
       "supportsTablet": true
     },
