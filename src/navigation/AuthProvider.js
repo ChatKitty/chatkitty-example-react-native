@@ -1,5 +1,4 @@
 import React, {createContext, useState} from 'react';
-import {firebase} from '../firebase';
 import {kitty} from '../chatkitty';
 
 export const AuthContext = createContext({});
@@ -12,39 +11,16 @@ export const AuthProvider = ({children}) => {
           value={{
             user,
             setUser,
-            login: async (email, password) => {
+            login: async (email, displayName) => {
               let result = await kitty.startSession({
                 username: email,
                 authParams: {
-                  password: password
+                  password: displayName
                 }
               });
 
               if (result.failed) {
                 console.log('Could not login')
-              }
-            },
-            register: async (displayName, email, password) => {
-              try {
-                await firebase.auth().createUserWithEmailAndPassword(email,
-                    password)
-                .then(credential => {
-                  credential.user.updateProfile({displayName: displayName})
-                  .then(async () => {
-                    let result = await kitty.startSession({
-                      username: email,
-                      authParams: {
-                        password: password
-                      }
-                    });
-
-                    if (result.failed) {
-                      console.log('Could not login')
-                    }
-                  })
-                });
-              } catch (e) {
-                console.log(e);
               }
             },
             logout: async () => {
