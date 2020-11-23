@@ -1,0 +1,73 @@
+/*
+ * Copyright (C) Howdi, Inc - All Rights Reserved.
+ * Unauthorized copying of this file, via any medium is strictly prohibited.
+ * This source is proprietary and confidential.
+ */
+
+description = """ChatKitty's demo running in a Nginx server."""
+version = "0.0.1"
+
+apply plugin: "docker"
+apply plugin: "com.moowork.node"
+
+buildscript {
+  ext {
+    gradleDockerVersion = "1.2"
+    nodePluginVersion = "1.3.1"
+  }
+
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath "se.transmode.gradle:gradle-docker:$gradleDockerVersion"
+    classpath "com.moowork.gradle:gradle-node-plugin:$nodePluginVersion"
+  }
+}
+
+ext {
+  dockerPush = project.hasProperty("dockerPush") ? dockerPush : false
+  buildTag = project.hasProperty("buildTag") ? buildTag : "latest"
+}
+
+docker {
+  baseImage "nginx"
+  maintainer "Howdi"
+}
+
+node {
+  version = "10.16.0"
+  npmVersion = "6.9.0"
+  download = true
+}
+
+task bundleDistribution(type: NpmTask, dependsOn: npmInstall) {
+  args = ['run', 'build']
+}
+
+task buildDocker(type: Docker, dependsOn: bundleDistribution) {
+  doFirst {
+    copy {
+      from "web-build"
+      into stageDir.path + "/app"
+      exclude "docker"
+    }
+    copy {
+      from "docker/nginx.conf"
+      into stageDir
+    }
+  }
+
+  applicationName = project.name
+  tag = "howdi/chatkitty-demo"
+  push = project.ext.dockerPush
+
+  if (buildTag != null) {
+    tagVersion = buildTag
+  }
+
+  exposePort 80
+  addFile("./app", "/usr/share/nginx/html/")
+  addFile("./nginx.conf", "/etc/nginx/")
+}
