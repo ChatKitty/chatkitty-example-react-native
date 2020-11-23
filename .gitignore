@@ -2,12 +2,14 @@ node_modules/**/*
 .expo/*
 npm-debug.*
 .gradle/
+/.idea/
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
 *.orig.*
+build/
 web-build/
 
 .idea
@@ -19,4 +21,3 @@ gradlew.bat
 
 # macOS
 .DS_Store
-/.idea/
