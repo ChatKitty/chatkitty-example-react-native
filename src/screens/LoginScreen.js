@@ -4,12 +4,17 @@ import {Title} from 'react-native-paper';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import {AuthContext} from '../navigation/AuthProvider';
+import Loading from "../components/Loading";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [displayName, setDisplayName] = useState('');
 
-  const {login} = useContext(AuthContext);
+  const {login, loading} = useContext(AuthContext);
+
+  if (loading) {
+    return <Loading/>;
+  }
 
   return (
       <View style={styles.container}>

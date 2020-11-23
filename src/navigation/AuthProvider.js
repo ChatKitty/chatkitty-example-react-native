@@ -5,19 +5,26 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   return (
       <AuthContext.Provider
           value={{
             user,
             setUser,
+            loading,
+            setLoading,
             login: async (email, displayName) => {
+              setLoading(true);
+
               let result = await kitty.startSession({
                 username: email,
                 authParams: {
                   displayName: displayName
                 }
               });
+
+              setLoading(false);
 
               if (result.failed) {
                 console.log('Could not login')
