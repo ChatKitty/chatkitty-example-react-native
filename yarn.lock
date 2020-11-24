@@ -4229,10 +4229,10 @@ charenc@0.0.2, charenc@~0.0.1:
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
   integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
 
-chatkitty@~0.0.26:
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-0.0.27.tgz#bbe5fce011a17564dfe5b8c12801ba45498f099f"
-  integrity sha512-3esQ+lBA7WxxXNxUtQtnA7q7Pi53j3Voi3v9qtwaY76U88eUfdda6PwWYY0M8yMB7MlUiVu1hTvORL/FoFm2TQ==
+chatkitty@^0.0.28:
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-0.0.28.tgz#764a0d00bc2b1b6bdd7fee0227498d8b69e280a2"
+  integrity sha512-evER7sXN82aFerasykXFDGra3oHtTjFV1F78fBocpP5QWyGxaDpMcKEDvwwPb7xdph6J5h2EU2AvqrfZ9Jj1Dw==
   dependencies:
     "@stomp/rx-stomp" "^0.3.5"
     rxjs "^6.6.3"
