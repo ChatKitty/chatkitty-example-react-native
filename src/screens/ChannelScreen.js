@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { GiftedChat } from 'react-native-gifted-chat';
-import { kitty } from '../chatkitty';
+import React, {useContext, useEffect, useState} from 'react';
+import {Bubble, GiftedChat} from 'react-native-gifted-chat';
+import {kitty} from '../chatkitty';
 import Loading from '../components/Loading';
-import { AuthContext } from '../navigation/AuthProvider';
+import {AuthContext} from '../navigation/AuthProvider';
 
-export default function ChannelScreen({ route }) {
+export default function ChannelScreen({route}) {
   const {user} = useContext(AuthContext);
 
   const chatUser = mapUser(user);
@@ -32,6 +32,19 @@ export default function ChannelScreen({ route }) {
       createdAt: new Date(message.createdTime),
       user: mapUser(message.user),
     };
+  }
+
+  function renderBubble(props) {
+    return (
+        <Bubble
+            {...props}
+            wrapperStyle={{
+              left: {
+                backgroundColor: '#d3d3d3'
+              }
+            }}
+        />
+    )
   }
 
   useEffect(() => {
@@ -98,6 +111,7 @@ export default function ChannelScreen({ route }) {
           loadEarlier={loadEarlier}
           isLoadingEarlier={isLoadingEarlier}
           onLoadEarlier={handleLoadEarlier}
+          renderBubble={renderBubble}
       />
   );
 }
