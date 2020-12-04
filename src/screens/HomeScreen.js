@@ -26,24 +26,24 @@ export default function HomeScreen({ navigation }) {
   }
 
   return (
-      <View style={styles.container}>
-        <FlatList
-            data={channels}
-            keyExtractor={(item) => item.id.toString()}
-            ItemSeparatorComponent={() => <Divider />}
-            renderItem={({ item }) => (
-                <List.Item
-                    title={item.name}
-                    description={item.type}
-                    titleNumberOfLines={1}
-                    titleStyle={styles.listTitle}
-                    descriptionStyle={styles.listDescription}
-                    descriptionNumberOfLines={1}
-                    onPress={() => navigation.navigate('Channel', { channel: item })}
-                />
-            )}
-        />
-      </View>
+    <View style={styles.container}>
+      <FlatList
+        data={channels}
+        keyExtractor={(item) => item.id.toString()}
+        ItemSeparatorComponent={() => <Divider />}
+        renderItem={({ item }) => (
+          <List.Item
+            title={item.name}
+            description={item.type}
+            titleNumberOfLines={1}
+            titleStyle={styles.listTitle}
+            descriptionStyle={styles.listDescription}
+            descriptionNumberOfLines={1}
+            onPress={() => navigation.navigate('Chat', { channel: item })}
+          />
+        )}
+      />
+    </View>
   );
 }
 

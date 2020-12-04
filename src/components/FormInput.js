@@ -6,12 +6,12 @@ const { width, height } = Dimensions.get('screen');
 
 export default function FormInput({ labelName, ...rest }) {
   return (
-      <TextInput
-          label={labelName}
-          style={styles.input}
-          numberOfLines={1}
-          {...rest}
-      />
+    <TextInput
+      label={labelName}
+      style={styles.input}
+      numberOfLines={1}
+      {...rest}
+    />
   );
 }
 
@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     width: width / 1.5,
-    height: height / 15
-  }
+    height: height / 15,
+  },
 });
