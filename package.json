@@ -2,8 +2,11 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
     "web": "expo start --web",
-    "build": "expo build:web",
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.+(js|jsx|json|yml|yaml|css|md|vue)\"",
     "eject": "expo eject"
   },
   "dependencies": {
@@ -11,12 +14,13 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
-    "chatkitty": "^0.0.28",
+    "chatkitty": "~0.0.26",
     "expo": "~39.0.2",
     "expo-constants": "^9.2.0",
     "expo-notifications": "^0.7.2",
     "expo-permissions": "^9.3.0",
     "expo-status-bar": "~1.0.2",
+    "firebase": "^7.24.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
@@ -31,7 +35,9 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
-    "expo-cli": "^3.28.5"
+    "@react-native-community/eslint-config": "^2.0.0",
+    "eslint": "^7.14.0",
+    "prettier": "^2.2.1"
   },
   "private": true
 }
