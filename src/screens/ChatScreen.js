@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { GiftedChat } from 'react-native-gifted-chat';
+import { Bubble, GiftedChat } from 'react-native-gifted-chat';
 import { kitty } from '../chatkitty';
 import Loading from '../components/Loading';
 import { AuthContext } from '../navigation/AuthProvider';
@@ -16,23 +16,6 @@ export default function ChatScreen({ route }) {
   const [loadEarlier, setLoadEarlier] = useState(false);
   const [isLoadingEarlier, setIsLoadingEarlier] = useState(false);
   const [messagePaginator, setMessagePaginator] = useState(null);
-
-  function mapUser(user) {
-    return {
-      _id: user.name,
-      name: user.displayName,
-      avatar: user.displayPictureUrl,
-    };
-  }
-
-  function mapMessage(message) {
-    return {
-      _id: message.id,
-      text: message.body,
-      createdAt: new Date(message.createdTime),
-      user: mapUser(message.user),
-    };
-  }
 
   useEffect(() => {
     let result = kitty.startChatSession({
@@ -60,8 +43,21 @@ export default function ChatScreen({ route }) {
     return result.session.end;
   }, []);
 
-  if (loading) {
-    return <Loading />;
+  function mapUser(user) {
+    return {
+      _id: user.name,
+      name: user.displayName,
+      avatar: user.displayPictureUrl,
+    };
+  }
+
+  function mapMessage(message) {
+    return {
+      _id: message.id,
+      text: message.body,
+      createdAt: new Date(message.createdTime),
+      user: mapUser(message.user),
+    };
   }
 
   async function handleSend(messages) {
@@ -91,6 +87,23 @@ export default function ChatScreen({ route }) {
     setIsLoadingEarlier(false);
   }
 
+  function renderBubble(props) {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          left: {
+            backgroundColor: '#d3d3d3',
+          },
+        }}
+      />
+    );
+  }
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <GiftedChat
       messages={messages}
@@ -99,6 +112,7 @@ export default function ChatScreen({ route }) {
       loadEarlier={loadEarlier}
       isLoadingEarlier={isLoadingEarlier}
       onLoadEarlier={handleLoadEarlier}
+      renderBubble={renderBubble}
     />
   );
 }
