@@ -1,15 +1,15 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Bubble, GiftedChat} from 'react-native-gifted-chat';
-import {kitty} from '../chatkitty';
+import React, { useContext, useEffect, useState } from 'react';
+import { GiftedChat } from 'react-native-gifted-chat';
+import { kitty } from '../chatkitty';
 import Loading from '../components/Loading';
-import {AuthContext} from '../navigation/AuthProvider';
+import { AuthContext } from '../navigation/AuthProvider';
 
-export default function ChannelScreen({route}) {
-  const {user} = useContext(AuthContext);
+export default function ChatScreen({ route }) {
+  const { user } = useContext(AuthContext);
 
   const chatUser = mapUser(user);
 
-  const {channel} = route.params;
+  const { channel } = route.params;
 
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -34,47 +34,34 @@ export default function ChannelScreen({route}) {
     };
   }
 
-  function renderBubble(props) {
-    return (
-        <Bubble
-            {...props}
-            wrapperStyle={{
-              left: {
-                backgroundColor: '#d3d3d3'
-              }
-            }}
-        />
-    )
-  }
-
   useEffect(() => {
     let result = kitty.startChatSession({
       channel: channel,
       onReceivedMessage: (message) => {
         setMessages((currentMessages) =>
-            GiftedChat.append(currentMessages, [mapMessage(message)])
+          GiftedChat.append(currentMessages, [mapMessage(message)])
         );
       },
     });
 
     kitty
-    .getMessages({
-      channel: channel,
-    })
-    .then((result) => {
-      setMessages(result.paginator.items.map(mapMessage));
+      .getMessages({
+        channel: channel,
+      })
+      .then((result) => {
+        setMessages(result.paginator.items.map(mapMessage));
 
-      setMessagePaginator(result.paginator);
-      setLoadEarlier(result.paginator.hasNextPage)
+        setMessagePaginator(result.paginator);
+        setLoadEarlier(result.paginator.hasNextPage);
 
-      setLoading(false);
-    });
+        setLoading(false);
+      });
 
     return result.session.end;
   }, []);
 
   if (loading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   async function handleSend(messages) {
@@ -97,21 +84,21 @@ export default function ChannelScreen({route}) {
 
     setMessagePaginator(nextPaginator);
 
-    setMessages(currentMessages => GiftedChat.prepend(currentMessages,
-        nextPaginator.items.map(mapMessage)));
+    setMessages((currentMessages) =>
+      GiftedChat.prepend(currentMessages, nextPaginator.items.map(mapMessage))
+    );
 
     setIsLoadingEarlier(false);
   }
 
   return (
-      <GiftedChat
-          messages={messages}
-          onSend={handleSend}
-          user={chatUser}
-          loadEarlier={loadEarlier}
-          isLoadingEarlier={isLoadingEarlier}
-          onLoadEarlier={handleLoadEarlier}
-          renderBubble={renderBubble}
-      />
+    <GiftedChat
+      messages={messages}
+      onSend={handleSend}
+      user={chatUser}
+      loadEarlier={loadEarlier}
+      isLoadingEarlier={isLoadingEarlier}
+      onLoadEarlier={handleLoadEarlier}
+    />
   );
 }

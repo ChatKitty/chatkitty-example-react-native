@@ -1,19 +1,26 @@
 import React, { useState, useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Title } from 'react-native-paper';
+import { Title, IconButton } from 'react-native-paper';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import { AuthContext } from '../navigation/AuthProvider';
 
-export default function LoginScreen({ navigation }) {
+export default function SignupScreen({ navigation }) {
+  const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { login } = useContext(AuthContext);
+  const { register } = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
-      <Title style={styles.titleText}>Welcome!</Title>
+      <Title style={styles.titleText}>Let's get started!</Title>
+      <FormInput
+        labelName="Display Name"
+        value={displayName}
+        autoCapitalize="none"
+        onChangeText={(userDisplayName) => setDisplayName(userDisplayName)}
+      />
       <FormInput
         labelName="Email"
         value={email}
@@ -27,17 +34,17 @@ export default function LoginScreen({ navigation }) {
         onChangeText={(userPassword) => setPassword(userPassword)}
       />
       <FormButton
-        title="Login"
+        title="Signup"
         modeValue="contained"
         labelStyle={styles.loginButtonLabel}
-        onPress={() => login(email, password)}
+        onPress={() => register(displayName, email, password)}
       />
-      <FormButton
-        title="Sign up here"
-        modeValue="text"
-        uppercase={false}
-        labelStyle={styles.navButtonText}
-        onPress={() => navigation.navigate('Signup')}
+      <IconButton
+        icon="keyboard-backspace"
+        size={30}
+        style={styles.navButton}
+        color="#5b3a70"
+        onPress={() => navigation.goBack()}
       />
     </View>
   );
@@ -58,6 +65,9 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   navButtonText: {
-    fontSize: 16,
+    fontSize: 18,
+  },
+  navButton: {
+    marginTop: 10,
   },
 });

@@ -6,13 +6,13 @@ import Routes from './Routes';
 
 export default function Providers() {
   return (
-      <PaperProvider theme={theme}>
-        <AuthProvider>
-          <InAppNotificationProvider>
-            <Routes />
-          </InAppNotificationProvider>
-        </AuthProvider>
-      </PaperProvider>
+    <PaperProvider theme={theme}>
+      <AuthProvider>
+        <InAppNotificationProvider>
+          <Routes />
+        </InAppNotificationProvider>
+      </AuthProvider>
+    </PaperProvider>
   );
 }
 

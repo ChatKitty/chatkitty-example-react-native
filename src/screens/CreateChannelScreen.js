@@ -11,41 +11,41 @@ export default function CreateChannelScreen({ navigation }) {
   function handleButtonPress() {
     if (channelName.length > 0) {
       kitty
-      .createChannel({
-        type: 'PUBLIC',
-        name: channelName,
-      })
-      .then(() => navigation.navigate('Home'));
+        .createChannel({
+          type: 'PUBLIC',
+          name: channelName,
+        })
+        .then(() => navigation.navigate('Home'));
     }
   }
 
   return (
-      <View style={styles.rootContainer}>
-        <View style={styles.closeButtonContainer}>
-          <IconButton
-              icon="close-circle"
-              size={36}
-              color="#5b3a70"
-              onPress={() => navigation.goBack()}
-          />
-        </View>
-        <View style={styles.innerContainer}>
-          <Title style={styles.title}>Create a new channel</Title>
-          <FormInput
-              labelName="Channel Name"
-              value={channelName}
-              onChangeText={(text) => setChannelName(text)}
-              clearButtonMode="while-editing"
-          />
-          <FormButton
-              title="Create"
-              modeValue="contained"
-              labelStyle={styles.buttonLabel}
-              onPress={() => handleButtonPress()}
-              disabled={channelName.length === 0}
-          />
-        </View>
+    <View style={styles.rootContainer}>
+      <View style={styles.closeButtonContainer}>
+        <IconButton
+          icon="close-circle"
+          size={36}
+          color="#5b3a70"
+          onPress={() => navigation.goBack()}
+        />
       </View>
+      <View style={styles.innerContainer}>
+        <Title style={styles.title}>Create a new channel</Title>
+        <FormInput
+          labelName="Channel Name"
+          value={channelName}
+          onChangeText={(text) => setChannelName(text)}
+          clearButtonMode="while-editing"
+        />
+        <FormButton
+          title="Create"
+          modeValue="contained"
+          labelStyle={styles.buttonLabel}
+          onPress={() => handleButtonPress()}
+          disabled={channelName.length === 0}
+        />
+      </View>
+    </View>
   );
 }
 
