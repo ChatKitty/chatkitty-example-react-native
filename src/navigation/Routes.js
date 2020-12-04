@@ -14,7 +14,7 @@ export default function Routes() {
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
-    function onCurrentUserChanged(currentUser) {
+    return kitty.onCurrentUserChanged((currentUser) => {
       setUser(currentUser);
 
       if (initializing) {
@@ -22,9 +22,7 @@ export default function Routes() {
       }
 
       setLoading(false);
-    }
-
-    return kitty.onCurrentUserChanged(onCurrentUserChanged);
+    });
   }, [initializing, setUser]);
 
   if (loading) {
