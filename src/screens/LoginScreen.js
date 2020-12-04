@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Title } from 'react-native-paper';
-import FormInput from '../components/FormInput';
+
 import FormButton from '../components/FormButton';
+import FormInput from '../components/FormInput';
 import { AuthContext } from '../navigation/AuthProvider';
 
 export default function LoginScreen({ navigation }) {

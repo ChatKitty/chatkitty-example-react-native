@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { List, Divider } from 'react-native-paper';
+import { useIsFocused } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { Divider, List } from 'react-native-paper';
+
 import { kitty } from '../chatkitty';
 import Loading from '../components/Loading';
-import { useIsFocused } from '@react-navigation/native';
 
 export default function HomeScreen({ navigation }) {
   const [channels, setChannels] = useState([]);
@@ -19,7 +20,7 @@ export default function HomeScreen({ navigation }) {
         setLoading(false);
       }
     });
-  }, [isFocused]);
+  }, [isFocused, loading]);
 
   if (loading) {
     return <Loading />;

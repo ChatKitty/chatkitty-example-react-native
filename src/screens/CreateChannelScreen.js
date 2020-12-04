@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { IconButton, Title } from 'react-native-paper';
-import FormInput from '../components/FormInput';
-import FormButton from '../components/FormButton';
+
 import { kitty } from '../chatkitty';
+import FormButton from '../components/FormButton';
+import FormInput from '../components/FormInput';
 
 export default function CreateChannelScreen({ navigation }) {
   const [channelName, setChannelName] = useState('');

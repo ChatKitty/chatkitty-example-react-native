@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Title, IconButton } from 'react-native-paper';
-import FormInput from '../components/FormInput';
+import React, { useContext, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { IconButton, Title } from 'react-native-paper';
+
 import FormButton from '../components/FormButton';
+import FormInput from '../components/FormInput';
 import { AuthContext } from '../navigation/AuthProvider';
 
 export default function SignupScreen({ navigation }) {
