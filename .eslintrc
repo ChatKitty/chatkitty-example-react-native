@@ -1,3 +1,24 @@
 {
-  "extends": "@react-native-community"
+  "extends": "@react-native-community",
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true,
+        "ignoreCase": true
+      }
+    ]
+  }
 }
