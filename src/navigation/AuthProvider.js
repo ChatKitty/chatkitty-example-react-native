@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
-import { firebase } from '../firebase';
+
 import { kitty } from '../chatkitty';
+import { firebase } from '../firebase';
 
 export const AuthContext = createContext({});
 

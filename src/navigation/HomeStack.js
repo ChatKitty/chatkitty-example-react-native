@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import { withInAppNotification } from '@chatkitty/react-native-in-app-notification';
+import { createStackNavigator } from '@react-navigation/stack';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
-import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen';
-import CreateChannelScreen from '../screens/CreateChannelScreen';
+import React, { useEffect } from 'react';
 import { IconButton } from 'react-native-paper';
-import ChatScreen from '../screens/ChatScreen';
-import BrowseChannelsScreen from '../screens/BrowseChannelsScreen';
+
 import { kitty } from '../chatkitty';
-import { withInAppNotification } from '@chatkitty/react-native-in-app-notification';
+import BrowseChannelsScreen from '../screens/BrowseChannelsScreen';
+import ChatScreen from '../screens/ChatScreen';
+import CreateChannelScreen from '../screens/CreateChannelScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 const ChatStack = createStackNavigator();
 const ModalStack = createStackNavigator();
@@ -57,7 +58,7 @@ function ChatComponent({ navigation, showNotification }) {
         },
       });
     });
-  }, []);
+  }, [navigation, showNotification]);
 
   return (
     <ChatStack.Navigator
@@ -74,13 +75,13 @@ function ChatComponent({ navigation, showNotification }) {
       <ChatStack.Screen
         name="Home"
         component={HomeScreen}
-        options={({ navigation }) => ({
+        options={(options) => ({
           headerRight: () => (
             <IconButton
               icon="plus"
               size={28}
               color="#ffffff"
-              onPress={() => navigation.navigate('BrowseChannels')}
+              onPress={() => options.navigation.navigate('BrowseChannels')}
             />
           ),
         })}
@@ -88,13 +89,13 @@ function ChatComponent({ navigation, showNotification }) {
       <ChatStack.Screen
         name="BrowseChannels"
         component={BrowseChannelsScreen}
-        options={({ navigation }) => ({
+        options={(options) => ({
           headerRight: () => (
             <IconButton
               icon="plus"
               size={28}
               color="#ffffff"
-              onPress={() => navigation.navigate('CreateChannel')}
+              onPress={() => options.navigation.navigate('CreateChannel')}
             />
           ),
         })}
@@ -123,15 +124,16 @@ async function registerForPushNotificationsAsync() {
       finalStatus = status;
     }
     if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!');
+      console.log('Failed to get push token for push notification!');
       return;
     }
 
     token = (await Notifications.getExpoPushTokenAsync()).data;
   } else {
-    alert('Must use physical device for Push Notifications');
+    console.log('Must use physical device for Push Notifications');
   }
 
+  // eslint-disable-next-line no-undef
   if (Platform.OS === 'android') {
     await Notifications.setNotificationChannelAsync('default', {
       name: 'default',

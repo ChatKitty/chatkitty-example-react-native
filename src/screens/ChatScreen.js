@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Bubble, GiftedChat } from 'react-native-gifted-chat';
+
 import { kitty } from '../chatkitty';
 import Loading from '../components/Loading';
 import { AuthContext } from '../navigation/AuthProvider';
 
 export default function ChatScreen({ route }) {
   const { user } = useContext(AuthContext);
-
-  const chatUser = mapUser(user);
-
   const { channel } = route.params;
 
   const [messages, setMessages] = useState([]);
@@ -18,7 +16,7 @@ export default function ChatScreen({ route }) {
   const [messagePaginator, setMessagePaginator] = useState(null);
 
   useEffect(() => {
-    let result = kitty.startChatSession({
+    let startChatSessionResult = kitty.startChatSession({
       channel: channel,
       onReceivedMessage: (message) => {
         setMessages((currentMessages) =>
@@ -40,30 +38,13 @@ export default function ChatScreen({ route }) {
         setLoading(false);
       });
 
-    return result.session.end;
-  }, []);
+    return startChatSessionResult.session.end;
+  }, [user, channel]);
 
-  function mapUser(user) {
-    return {
-      _id: user.name,
-      name: user.displayName,
-      avatar: user.displayPictureUrl,
-    };
-  }
-
-  function mapMessage(message) {
-    return {
-      _id: message.id,
-      text: message.body,
-      createdAt: new Date(message.createdTime),
-      user: mapUser(message.user),
-    };
-  }
-
-  async function handleSend(messages) {
+  async function handleSend(pendingMessages) {
     await kitty.sendMessage({
       channel: channel,
-      body: messages[0].text,
+      body: pendingMessages[0].text,
     });
   }
 
@@ -108,11 +89,28 @@ export default function ChatScreen({ route }) {
     <GiftedChat
       messages={messages}
       onSend={handleSend}
-      user={chatUser}
+      user={mapUser(user)}
       loadEarlier={loadEarlier}
       isLoadingEarlier={isLoadingEarlier}
       onLoadEarlier={handleLoadEarlier}
       renderBubble={renderBubble}
     />
   );
+}
+
+function mapMessage(message) {
+  return {
+    _id: message.id,
+    text: message.body,
+    createdAt: new Date(message.createdTime),
+    user: mapUser(message.user),
+  };
+}
+
+function mapUser(user) {
+  return {
+    _id: user.name,
+    name: user.displayName,
+    avatar: user.displayPictureUrl,
+  };
 }

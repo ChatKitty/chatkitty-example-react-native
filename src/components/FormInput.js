@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
 const { width, height } = Dimensions.get('screen');

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
-import { List, Divider } from 'react-native-paper';
+import { useIsFocused } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { Divider, List } from 'react-native-paper';
+
 import { kitty } from '../chatkitty';
 import Loading from '../components/Loading';
-import { useIsFocused } from '@react-navigation/native';
 
 export default function BrowseChannelsScreen({ navigation }) {
   const [channels, setChannels] = useState([]);
@@ -19,16 +20,16 @@ export default function BrowseChannelsScreen({ navigation }) {
         setLoading(false);
       }
     });
-  }, [isFocused]);
-
-  if (loading) {
-    return <Loading />;
-  }
+  }, [loading, isFocused]);
 
   async function handleJoinChannel(channel) {
     const result = await kitty.joinChannel({ channel: channel });
 
     navigation.navigate('Chat', { channel: result.channel });
+  }
+
+  if (loading) {
+    return <Loading />;
   }
 
   return (
