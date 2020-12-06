@@ -7,13 +7,18 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
+        loading,
+        setLoading,
         login: async (email, password) => {
+          setLoading(true);
+
           let result = await kitty.startSession({
             username: email,
             authParams: {
@@ -21,11 +26,15 @@ export const AuthProvider = ({ children }) => {
             },
           });
 
+          setLoading(false);
+
           if (result.failed) {
             console.log('Could not login');
           }
         },
         register: async (displayName, email, password) => {
+          setLoading(true);
+
           try {
             await firebase
               .auth()
@@ -49,6 +58,8 @@ export const AuthProvider = ({ children }) => {
           } catch (e) {
             console.log(e);
           }
+
+          setLoading(false);
         },
         logout: async () => {
           try {
