@@ -20,7 +20,7 @@ export default function BrowseChannelsScreen({ navigation }) {
         setLoading(false);
       }
     });
-  }, [loading, isFocused]);
+  }, [isFocused, loading]);
 
   async function handleJoinChannel(channel) {
     const result = await kitty.joinChannel({ channel: channel });
