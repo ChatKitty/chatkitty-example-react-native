@@ -12,5 +12,12 @@ npm-debug.*
 build/
 web-build/
 
+.idea
+.gradle
+build
+gradle
+gradlew
+gradlew.bat
+
 # macOS
 .DS_Store
