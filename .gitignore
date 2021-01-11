@@ -21,3 +21,4 @@ gradlew.bat
 
 # macOS
 .DS_Store
+/.idea/
