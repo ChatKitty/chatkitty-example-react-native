@@ -13,13 +13,21 @@ export default function HomeScreen({ navigation }) {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    kitty.getChannels().then((result) => {
-      setChannels(result.paginator.items);
+    let isCancelled = false;
 
-      if (loading) {
-        setLoading(false);
+    kitty.getChannels().then((result) => {
+      if (!isCancelled) {
+        setChannels(result.paginator.items);
+
+        if (loading) {
+          setLoading(false);
+        }
       }
     });
+
+    return () => {
+      isCancelled = true;
+    };
   }, [isFocused, loading]);
 
   if (loading) {
