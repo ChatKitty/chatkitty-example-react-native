@@ -1044,10 +1044,10 @@
     deepmerge "^3.2.0"
     hoist-non-react-statics "^3.3.0"
 
-"@chatkitty/react-native-in-app-notification@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@chatkitty/react-native-in-app-notification/-/react-native-in-app-notification-1.0.0.tgz#ca22f12e2542ac0c85b6455da800883c88f787e6"
-  integrity sha512-FpZJEUMwSOEX1OAiWgtxiIoLI2O3yUq6SKEWVO52I/836DCfrTfc6Pjixqm7Iy+/BKlMz5FVOgecp18AkUmLDQ==
+"@chatkitty/react-native-in-app-notification@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@chatkitty/react-native-in-app-notification/-/react-native-in-app-notification-1.1.0.tgz#4a23c4333cda44246f2fc648ae1fa3582701e988"
+  integrity sha512-LbuXWjsrl4Ot66C+LCftST2wy5SLBEWoVBBajtuSXHinQoIiUWH+XfS+gTuht982z2U+Z2xVbDqO4lnRYiR/Mg==
   dependencies:
     hoist-non-react-statics "^3.0.1"
     react-native-iphone-x-helper "^1.2.0"
