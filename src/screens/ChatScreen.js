@@ -109,7 +109,7 @@ function mapMessage(message) {
 
 function mapUser(user) {
   return {
-    _id: user.name,
+    _id: user.id,
     name: user.displayName,
     avatar: user.displayPictureUrl,
   };
