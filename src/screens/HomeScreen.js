@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { Divider, List } from 'react-native-paper';
 
-import { kitty } from '../chatkitty';
+import { getChannelDisplayName, kitty } from '../chatkitty';
 import Loading from '../components/Loading';
 
 export default function HomeScreen({ navigation }) {
@@ -42,7 +42,7 @@ export default function HomeScreen({ navigation }) {
         ItemSeparatorComponent={() => <Divider />}
         renderItem={({ item }) => (
           <List.Item
-            title={item.name}
+            title={getChannelDisplayName(item)}
             description={item.type}
             titleNumberOfLines={1}
             titleStyle={styles.listTitle}

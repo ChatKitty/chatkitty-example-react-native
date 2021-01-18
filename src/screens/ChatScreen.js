@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Bubble, GiftedChat } from 'react-native-gifted-chat';
+import { Avatar, Bubble, GiftedChat } from 'react-native-gifted-chat';
 
 import { kitty } from '../chatkitty';
 import Loading from '../components/Loading';
 import { AuthContext } from '../navigation/AuthProvider';
 
-export default function ChatScreen({ route }) {
+export default function ChatScreen({ route, navigation }) {
   const { user } = useContext(AuthContext);
   const { channel } = route.params;
 
@@ -81,6 +81,24 @@ export default function ChatScreen({ route }) {
     );
   }
 
+  function renderAvatar(props) {
+    return (
+      <Avatar
+        {...props}
+        onPressAvatar={(clickedUser) => {
+          kitty
+            .createChannel({
+              type: 'DIRECT',
+              members: [{ id: clickedUser._id }],
+            })
+            .then((result) => {
+              navigation.navigate('Chat', { channel: result.channel });
+            });
+        }}
+      />
+    );
+  }
+
   if (loading) {
     return <Loading />;
   }
@@ -94,6 +112,7 @@ export default function ChatScreen({ route }) {
       isLoadingEarlier={isLoadingEarlier}
       onLoadEarlier={handleLoadEarlier}
       renderBubble={renderBubble}
+      renderAvatar={renderAvatar}
     />
   );
 }
