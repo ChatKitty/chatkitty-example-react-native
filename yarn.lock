@@ -1017,10 +1017,10 @@
     deepmerge "^3.2.0"
     hoist-non-react-statics "^3.3.0"
 
-"@chatkitty/react-native-in-app-notification@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@chatkitty/react-native-in-app-notification/-/react-native-in-app-notification-1.1.0.tgz#4a23c4333cda44246f2fc648ae1fa3582701e988"
-  integrity sha512-LbuXWjsrl4Ot66C+LCftST2wy5SLBEWoVBBajtuSXHinQoIiUWH+XfS+gTuht982z2U+Z2xVbDqO4lnRYiR/Mg==
+"@chatkitty/react-native-in-app-notification@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@chatkitty/react-native-in-app-notification/-/react-native-in-app-notification-1.1.2.tgz#2ae9801e96b5b9f1aa6028a025b85ef1d5611fdd"
+  integrity sha512-Q5dxmJ1j5aRaovJmxRdyMhfakq5dLwzgfk/LefP0eQtP3Zrt7QBd23Q85RSn2nSZfee8/HMjHL1j09DxsTPHNQ==
   dependencies:
     hoist-non-react-statics "^3.0.1"
     react-native-iphone-x-helper "^1.2.0"
@@ -2630,7 +2630,7 @@ available-typed-arrays@^1.0.2:
   dependencies:
     array-filter "^1.0.0"
 
-axios@^0.21.0:
+axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
@@ -2987,12 +2987,12 @@ chardet@^0.4.0:
   integrity sha1-tUc7M9yXxCTl2Y3IfVXU2KKci/I=
 
 chatkitty@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-1.3.0.tgz#f6631ea6f6b4d2a98b02c820299e73c6d3c175b1"
-  integrity sha512-n0E+ROxP1xtFRRlP15tTXNVmzGGO63YJH9yeSPUL7ugDxVIf+ZTvjpVun1SDQcvWLcQpa33qp2TfwA7vPXktDw==
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-1.4.0.tgz#df64100a8dcc33b0a5e9761ef52797725ebe1867"
+  integrity sha512-9gAWX2KeP3Wa5JcLmvoUghiDRFv6Xl2EbyvVNaZ2271S5GOhRZzqn7Ab0Ko0YQSUaiDR4BjflkbMLghQ1LVByA==
   dependencies:
     "@stomp/rx-stomp" "^0.3.5"
-    axios "^0.21.0"
+    axios "^0.21.1"
     rxjs "^6.6.3"
     text-encoding "^0.7.0"
 

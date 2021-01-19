@@ -26,7 +26,7 @@
     ]
   },
   "dependencies": {
-    "@chatkitty/react-native-in-app-notification": "^1.1.0",
+    "@chatkitty/react-native-in-app-notification": "^1.1.2",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
