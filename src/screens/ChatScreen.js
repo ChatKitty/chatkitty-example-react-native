@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Avatar, Bubble, GiftedChat } from 'react-native-gifted-chat';
+import { Text } from 'react-native-paper';
 
 import { kitty } from '../chatkitty';
 import Loading from '../components/Loading';
@@ -117,6 +119,18 @@ export default function ChatScreen({ route, navigation }) {
     );
   }
 
+  function renderFooter() {
+    if (typing) {
+      return (
+        <View style={styles.footer}>
+          <Text>{typing.displayName} is typing</Text>
+        </View>
+      );
+    }
+
+    return null;
+  }
+
   if (loading) {
     return <Loading />;
   }
@@ -130,9 +144,9 @@ export default function ChatScreen({ route, navigation }) {
       isLoadingEarlier={isLoadingEarlier}
       onLoadEarlier={handleLoadEarlier}
       onInputTextChanged={handleInputTextChanged}
-      isTyping={typing != null}
       renderBubble={renderBubble}
       renderAvatar={renderAvatar}
+      renderFooter={renderFooter}
     />
   );
 }
@@ -153,3 +167,11 @@ function mapUser(user) {
     avatar: user.displayPictureUrl,
   };
 }
+
+const styles = StyleSheet.create({
+  footer: {
+    paddingRight: 10,
+    paddingLeft: 10,
+    paddingBottom: 5,
+  },
+});
