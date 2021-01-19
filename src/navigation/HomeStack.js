@@ -2,8 +2,8 @@ import { withInAppNotification } from '@chatkitty/react-native-in-app-notificati
 import { createStackNavigator } from '@react-navigation/stack';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
 import React, { useEffect } from 'react';
+import { Platform } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
 import { kitty } from '../chatkitty';
@@ -114,13 +114,13 @@ function ChatComponent({ navigation, showNotification }) {
 async function registerForPushNotificationsAsync() {
   let token;
 
-  if (Constants.isDevice) {
-    const { status: existingStatus } = await Permissions.getAsync(
-      Permissions.NOTIFICATIONS
-    );
+  if (Constants.isDevice && Platform.OS !== 'web') {
+    const {
+      status: existingStatus,
+    } = await Notifications.getPermissionsAsync();
     let finalStatus = existingStatus;
     if (existingStatus !== 'granted') {
-      const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+      const { status } = await Notifications.requestPermissionsAsync();
       finalStatus = status;
     }
     if (finalStatus !== 'granted') {
@@ -133,7 +133,6 @@ async function registerForPushNotificationsAsync() {
     console.log('Must use physical device for Push Notifications');
   }
 
-  // eslint-disable-next-line no-undef
   if (Platform.OS === 'android') {
     await Notifications.setNotificationChannelAsync('default', {
       name: 'default',
