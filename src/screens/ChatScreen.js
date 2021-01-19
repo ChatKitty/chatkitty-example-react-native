@@ -14,6 +14,7 @@ export default function ChatScreen({ route, navigation }) {
   const [loadEarlier, setLoadEarlier] = useState(false);
   const [isLoadingEarlier, setIsLoadingEarlier] = useState(false);
   const [messagePaginator, setMessagePaginator] = useState(null);
+  const [typing, setTyping] = useState(null);
 
   useEffect(() => {
     let startChatSessionResult = kitty.startChatSession({
@@ -22,6 +23,16 @@ export default function ChatScreen({ route, navigation }) {
         setMessages((currentMessages) =>
           GiftedChat.append(currentMessages, [mapMessage(message)])
         );
+      },
+      onTypingStarted: (typingUser) => {
+        if (typingUser.id !== user.id) {
+          setTyping(typingUser);
+        }
+      },
+      onTypingStopped: (typingUser) => {
+        if (typingUser.id !== user.id) {
+          setTyping(null);
+        }
       },
     });
 
@@ -68,6 +79,13 @@ export default function ChatScreen({ route, navigation }) {
     setIsLoadingEarlier(false);
   }
 
+  async function handleInputTextChanged(text) {
+    await kitty.sendKeystrokes({
+      channel: channel,
+      keys: text,
+    });
+  }
+
   function renderBubble(props) {
     return (
       <Bubble
@@ -111,6 +129,8 @@ export default function ChatScreen({ route, navigation }) {
       loadEarlier={loadEarlier}
       isLoadingEarlier={isLoadingEarlier}
       onLoadEarlier={handleLoadEarlier}
+      onInputTextChanged={handleInputTextChanged}
+      isTyping={typing != null}
       renderBubble={renderBubble}
       renderAvatar={renderAvatar}
     />
