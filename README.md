@@ -21,6 +21,12 @@ This sample app demonstrates the following features:
 
 - **Group chat** - users can request to join or be invited to group chats.
 
+- **Direct chat** - users can chat one-on-one privately.
+
 - **Push notifications** - users receive push notifications when chat events happen.
+
+- **Typing indicators** - users can see when someone is typing.
+
+- **Chat presence notifications** - users get notified when a user enters or leaves the chat.
 
 👉 Checkout [our blog post series on building chat](https://www.chatkitty.com/guides/)
