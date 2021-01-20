@@ -7,7 +7,7 @@ import { kitty } from '../chatkitty';
 import Loading from '../components/Loading';
 import { AuthContext } from '../navigation/AuthProvider';
 
-export default function ChatScreen({ route, navigation }) {
+export default function ChatScreen({ route, navigation, showNotification }) {
   const { user } = useContext(AuthContext);
   const { channel } = route.params;
 
@@ -36,6 +36,16 @@ export default function ChatScreen({ route, navigation }) {
           setTyping(null);
         }
       },
+      onParticipantEnteredChat: (participant) => {
+        showNotification({
+          title: `${participant.displayName} entered the chat`,
+        });
+      },
+      onParticipantLeftChat: (participant) => {
+        showNotification({
+          title: `${participant.displayName} left the chat`,
+        });
+      },
     });
 
     kitty
@@ -52,7 +62,7 @@ export default function ChatScreen({ route, navigation }) {
       });
 
     return startChatSessionResult.session.end;
-  }, [user, channel]);
+  }, [user, channel, showNotification]);
 
   async function handleSend(pendingMessages) {
     await kitty.sendMessage({

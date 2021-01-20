@@ -102,7 +102,7 @@ function ChatComponent({ navigation, showNotification }) {
       />
       <ChatStack.Screen
         name="Chat"
-        component={ChatScreen}
+        component={withInAppNotification(ChatScreen)}
         options={({ route }) => ({
           title: getChannelDisplayName(route.params.channel),
         })}
