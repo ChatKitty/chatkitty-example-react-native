@@ -1,7 +1,7 @@
 import { useIsFocused } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import { Divider, List } from 'react-native-paper';
+import { Button, Dialog, Divider, List, Portal } from 'react-native-paper';
 
 import { getChannelDisplayName, kitty } from '../chatkitty';
 import Loading from '../components/Loading';
@@ -9,6 +9,21 @@ import Loading from '../components/Loading';
 export default function HomeScreen({ navigation }) {
   const [channels, setChannels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [leaveChannel, setLeaveChannel] = useState(null);
+
+  function handleLeaveChannel() {
+    kitty.leaveChannel({ channel: leaveChannel }).then(() => {
+      setLeaveChannel(null);
+
+      kitty.getChannels().then((result) => {
+        setChannels(result.paginator.items);
+      });
+    });
+  }
+
+  function handleDismissLeaveChannel() {
+    setLeaveChannel(null);
+  }
 
   const isFocused = useIsFocused();
 
@@ -49,9 +64,21 @@ export default function HomeScreen({ navigation }) {
             descriptionStyle={styles.listDescription}
             descriptionNumberOfLines={1}
             onPress={() => navigation.navigate('Chat', { channel: item })}
+            onLongPress={() => {
+              setLeaveChannel(item);
+            }}
           />
         )}
       />
+      <Portal>
+        <Dialog visible={leaveChannel} onDismiss={handleDismissLeaveChannel}>
+          <Dialog.Title>Leave channel?</Dialog.Title>
+          <Dialog.Actions>
+            <Button onPress={handleDismissLeaveChannel}>Cancel</Button>
+            <Button onPress={handleLeaveChannel}>Confirm</Button>
+          </Dialog.Actions>
+        </Dialog>
+      </Portal>
     </View>
   );
 }
