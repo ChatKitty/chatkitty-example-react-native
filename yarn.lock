@@ -2986,10 +2986,10 @@ chardet@^0.4.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
   integrity sha1-tUc7M9yXxCTl2Y3IfVXU2KKci/I=
 
-chatkitty@^1.3.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-1.4.0.tgz#df64100a8dcc33b0a5e9761ef52797725ebe1867"
-  integrity sha512-9gAWX2KeP3Wa5JcLmvoUghiDRFv6Xl2EbyvVNaZ2271S5GOhRZzqn7Ab0Ko0YQSUaiDR4BjflkbMLghQ1LVByA==
+chatkitty@^1.4.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-1.8.0.tgz#f851c9dff780283e62c5ad333af5e5a3fb7603bf"
+  integrity sha512-lqmgXUDdImaiK3Xkrofd7kh9Gg8JL8mFtzTwIPpygZEkIDDhXpaqYoXbkJs94J3idF2RbYuOEwQAep44MH0mrA==
   dependencies:
     "@stomp/rx-stomp" "^0.3.5"
     axios "^0.21.1"
@@ -4455,9 +4455,9 @@ flatted@^3.1.0:
   integrity sha512-tW+UkmtNg/jv9CSofAKvgVcO7c2URjhTdW1ZTkcAritblu8tajiYy7YisnIflEwtKssCtOxpnBRoCB7iap0/TA==
 
 follow-redirects@^1.10.0:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
-  integrity sha512-SSG5xmZh1mkPGyKzjZP8zLjltIfpW32Y5QpdNJyjcfGxK3qo3NDDkZOZSFiGn1A6SclQxY9GzEwAHQ3dmYRWpg==
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.2.tgz#dd73c8effc12728ba5cf4259d760ea5fb83e3147"
+  integrity sha512-6mPTgLxYm3r6Bkkg0vNM0HTjfGrOEtsfbhagQvbxDEsEkpNhw582upBaoRZylzen6krEmxXJgt9Ju6HiI4O7BA==
 
 fontfaceobserver@^2.1.0:
   version "2.1.0"
