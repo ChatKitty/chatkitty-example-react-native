@@ -1,7 +1,7 @@
 import ChatKitty from 'chatkitty';
 
 export const kitty = ChatKitty.getInstance(
-  '73ddf9ec-d560-4c15-9302-7c2c162fb309'
+  '19b458d0-2b50-491c-8f13-65ec12f3978e'
 );
 
 export function getChannelDisplayName(channel) {

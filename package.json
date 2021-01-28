@@ -3,9 +3,8 @@
   "license": "MIT",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
     "web": "expo start --web",
+    "build": "expo build:web",
     "lint": "eslint .",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.js\" --write",
@@ -36,7 +35,6 @@
     "expo-notifications": "^0.8.2",
     "expo-permissions": "^10.0.0",
     "expo-status-bar": "~1.0.3",
-    "firebase": "7.9.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.0.tar.gz",
