@@ -2986,10 +2986,10 @@ chardet@^0.4.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
   integrity sha1-tUc7M9yXxCTl2Y3IfVXU2KKci/I=
 
-chatkitty@^1.4.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-1.8.0.tgz#f851c9dff780283e62c5ad333af5e5a3fb7603bf"
-  integrity sha512-lqmgXUDdImaiK3Xkrofd7kh9Gg8JL8mFtzTwIPpygZEkIDDhXpaqYoXbkJs94J3idF2RbYuOEwQAep44MH0mrA==
+chatkitty@~1.8.0:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/chatkitty/-/chatkitty-1.8.1.tgz#c8826ab1d48457b5e1eeb5525fd86eff9e41b127"
+  integrity sha512-C5gs8Wf1z5KXRDCv1M/MkDiCCGmRZfAKNY26HyNkGHVqzu0mCjYYMbzwS4TVl9J00YSYAQ2hjBbFm8FMlQHA2A==
   dependencies:
     "@stomp/rx-stomp" "^0.3.5"
     axios "^0.21.1"
