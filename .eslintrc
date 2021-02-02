@@ -19,6 +19,9 @@
         "ignoreDeclarationSort": true,
         "ignoreCase": true
       }
+    ],
+    "prefer-const": [
+      "error"
     ]
   }
 }
