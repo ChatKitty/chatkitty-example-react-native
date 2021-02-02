@@ -19,7 +19,7 @@ export default function ChatScreen({ route, navigation, showNotification }) {
   const [typing, setTyping] = useState(null);
 
   useEffect(() => {
-    let startChatSessionResult = kitty.startChatSession({
+    const startChatSessionResult = kitty.startChatSession({
       channel: channel,
       onReceivedMessage: (message) => {
         setMessages((currentMessages) =>

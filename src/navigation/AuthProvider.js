@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         login: async (email, displayName) => {
           setLoading(true);
 
-          let result = await kitty.startSession({
+          const result = await kitty.startSession({
             username: email,
             authParams: {
               displayName: displayName,
