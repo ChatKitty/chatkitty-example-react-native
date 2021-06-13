@@ -91,8 +91,8 @@ export default function ChatScreen({ route, navigation, showNotification }) {
     setIsLoadingEarlier(false);
   }
 
-  async function handleInputTextChanged(text) {
-    await kitty.sendKeystrokes({
+  function handleInputTextChanged(text) {
+    kitty.sendKeystrokes({
       channel: channel,
       keys: text,
     });
