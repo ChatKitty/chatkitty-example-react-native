@@ -13,7 +13,7 @@ export default function BrowseChannelsScreen({ navigation }) {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    kitty.getChannels({ joinable: true }).then((result) => {
+    kitty.getChannels({ filter: { joined: false } }).then((result) => {
       setChannels(result.paginator.items);
 
       if (loading) {
