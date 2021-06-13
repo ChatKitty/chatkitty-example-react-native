@@ -15,7 +15,7 @@ export default function HomeScreen({ navigation }) {
   useEffect(() => {
     let isCancelled = false;
 
-    kitty.getChannels().then((result) => {
+    kitty.getChannels({ filter: { joined: true } }).then((result) => {
       if (!isCancelled) {
         setChannels(result.paginator.items);
 
