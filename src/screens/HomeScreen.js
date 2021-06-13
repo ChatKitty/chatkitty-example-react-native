@@ -15,7 +15,7 @@ export default function HomeScreen({ navigation }) {
     kitty.leaveChannel({ channel: leaveChannel }).then(() => {
       setLeaveChannel(null);
 
-      kitty.getChannels().then((result) => {
+      kitty.getChannels({ filter: { joined: true } }).then((result) => {
         setChannels(result.paginator.items);
       });
     });
@@ -30,7 +30,7 @@ export default function HomeScreen({ navigation }) {
   useEffect(() => {
     let isCancelled = false;
 
-    kitty.getChannels().then((result) => {
+    kitty.getChannels({ filter: { joined: true } }).then((result) => {
       if (!isCancelled) {
         setChannels(result.paginator.items);
 

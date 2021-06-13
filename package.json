@@ -29,7 +29,7 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
-    "chatkitty": "~1.9.0",
+    "chatkitty": "1.26.0",
     "expo": "~40.0.0",
     "expo-constants": "^9.3.5",
     "expo-notifications": "^0.8.2",
