@@ -6,29 +6,27 @@ import { Divider, List } from 'react-native-paper';
 import { chatkitty } from '../chatkitty';
 import Loading from '../components/loading';
 
-export default function HomeScreen({ navigation }) {
+export default function BrowseChannelsScreen({ navigation }) {
   const [channels, setChannels] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    let isCancelled = false;
+    chatkitty.listChannels({ filter: { joined: false } }).then((result) => {
+      setChannels(result.paginator.items);
 
-    chatkitty.listChannels({ filter: { joined: true } }).then((result) => {
-      if (!isCancelled) {
-        setChannels(result.paginator.items);
-
-        if (loading) {
-          setLoading(false);
-        }
+      if (loading) {
+        setLoading(false);
       }
     });
-
-    return () => {
-      isCancelled = true;
-    };
   }, [isFocused, loading]);
+
+  async function handleJoinChannel(channel) {
+    const result = await chatkitty.joinChannel({ channel: channel });
+
+    navigation.navigate('Chat', { channel: result.channel });
+  }
 
   if (loading) {
     return <Loading />;
@@ -48,7 +46,7 @@ export default function HomeScreen({ navigation }) {
                     titleStyle={styles.listTitle}
                     descriptionStyle={styles.listDescription}
                     descriptionNumberOfLines={1}
-                    onPress={() => navigation.navigate('Chat', { channel: item })}
+                    onPress={() => handleJoinChannel(item)}
                 />
             )}
         />

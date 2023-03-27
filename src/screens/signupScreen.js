@@ -49,7 +49,7 @@ export default function SignupScreen({ navigation }) {
             icon='keyboard-backspace'
             size={30}
             style={styles.navButton}
-            color='#5b3a70'
+            iconColor='#5b3a70'
             onPress={() => navigation.goBack()}
         />
       </View>
