@@ -1,6 +1,10 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { IconButton } from 'react-native-paper';
+
+import {chatkitty} from '../chatkitty';
+
+import { NotificationContext } from './notificationProvider';
 
 import BrowseChannelsScreen from '../screens/browseChannelsScreen';
 import ChatScreen from '../screens/chatScreen';
@@ -11,6 +15,19 @@ const ChatStack = createStackNavigator();
 const ModalStack = createStackNavigator();
 
 export default function HomeStack() {
+  const { registerForPushNotifications, sendNotification } = useContext(NotificationContext);
+
+  useEffect(() => {
+    registerForPushNotifications();
+
+    chatkitty.onNotificationReceived(async (notification) => {
+      await sendNotification({
+        title: notification.title,
+        body: notification.body
+      });
+    });
+  }, []);
+
   return (
       <ModalStack.Navigator screenOptions={{ headerShown: false, presentation: 'modal' }}>
         <ModalStack.Screen name='ChatApp' component={ChatComponent} />
