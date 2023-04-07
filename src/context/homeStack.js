@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React, { useContext, useEffect } from 'react';
 import { IconButton } from 'react-native-paper';
 
-import {chatkitty} from '../chatkitty';
+import { chatkitty, channelDisplayName } from '../chatkitty';
 
 import { NotificationContext } from './notificationProvider';
 
@@ -81,7 +81,7 @@ function ChatComponent() {
             name='Chat'
             component={ChatScreen}
             options={({ route }) => ({
-              title: route.params.channel.name
+              title: channelDisplayName(route.params.channel)
             })}
         />
       </ChatStack.Navigator>
